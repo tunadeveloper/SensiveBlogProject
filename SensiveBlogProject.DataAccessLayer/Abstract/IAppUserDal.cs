@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace SensiveBlogProject.DataAccessLayer.Abstract
 {
-    public interface IArticleDal :IGenericDal<Article>
+    public interface IAppUserDal : IGenericDal<AppUser>
     {
-        List<Article> ArticleListWithCategory();
-        List<Article> ArticleListWithCategoryAndAppUser();
+       
     }
 }
