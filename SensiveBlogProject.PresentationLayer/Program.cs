@@ -30,6 +30,8 @@ namespace SensiveBlogProject.PresentationLayer
 			builder.Services.AddScoped<IContactDal, EfContactDal>();
 			builder.Services.AddScoped<IContactService, ContactManager>();
 
+            builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+            builder.Services.AddScoped<IAppUserService, AppUserManager>();
 
 
 			builder.Services.AddControllersWithViews();

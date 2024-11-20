@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+@await Component.InvokeAsync("_ArticleListHeadComponentPartial")
+
+<body>
+    <div class="main-container">
+
+        <!-- Blog Listesi -->
+        @await Component.InvokeAsync("_ArticleListComponentPartial")
+  
+        <!-- Kategori Listesi -->
+        <div class="category-list">
+            <h2>Kategoriler</h2>
+            <ul>
+                <li><a href="#kategori1">Kategori 1</a></li>
+                <li><a href="#kategori2">Kategori 2</a></li>
+                <li><a href="#kategori3">Kategori 3</a></li>
+                <li><a href="#kategori4">Kategori 4</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
