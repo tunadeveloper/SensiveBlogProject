@@ -24,8 +24,8 @@ namespace SensiveBlogProject.EntityLayer.Concrete
 
         public int AppUserId { get; set; }
 
-        public AppUser AppUser { get; set; }    
+        public AppUser AppUser { get; set; }
 
-
+        public List<Comment> Comments { get; set; }
     }
 }

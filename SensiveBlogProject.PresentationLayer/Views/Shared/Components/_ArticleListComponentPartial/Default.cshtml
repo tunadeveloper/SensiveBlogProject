@@ -1,18 +1,14 @@
-﻿<div class="blog-list">
+﻿@model List<Article>
+
+<div class="blog-list">
     <h2>Blog Listesi</h2>
+    @foreach(var item in Model){
     <div class="blog-item">
-        <img src="https://via.placeholder.com/800x400" alt="Blog 1 Kapak">
-        <a href="https://example.com/blog1" target="_blank">Blog Başlığı 1</a>
-        <p>Bu, Blog 1'in kısa açıklamasıdır.</p>
+        <img src="@item.CoverImageUrl" alt="Blog 1 Kapak">
+        <a href="https://example.com/blog1" target="_blank">@item.Title</a>
+            <p>@(item.Description.Length > 200 ? item.Description.Substring(0, 200) + "..." : item.Description)</p>
     </div>
-    <div class="blog-item">
-        <img src="https://via.placeholder.com/800x400" alt="Blog 2 Kapak">
-        <a href="https://example.com/blog2" target="_blank">Blog Başlığı 2</a>
-        <p>Bu, Blog 2'nin kısa açıklamasıdır.</p>
-    </div>
-    <div class="blog-item">
-        <img src="https://via.placeholder.com/800x400" alt="Blog 3 Kapak">
-        <a href="https://example.com/blog3" target="_blank">Blog Başlığı 3</a>
-        <p>Bu, Blog 3'ün kısa açıklamasıdır.</p>
-    </div>
+      
+    }
 </div>
+

@@ -1,0 +1,21 @@
+﻿@model List<Article>
+
+    @foreach(var item in Model){
+
+    
+<!-- Kapak Fotoğrafı -->
+<div class="cover" style="background-image: url('@item.CoverImageUrl');"></div>
+
+<!-- Blog Meta Bilgileri -->
+<div class="meta">
+    <span>Kategori: <strong>@item.CategoryId</strong></span>
+    <span>Yazar: <strong>Ali Yıldız</strong></span>
+    <span>Oluşturma Tarihi: <strong>@item.CreatedDate</strong></span>
+</div>
+
+<!-- Blog Detayı -->
+<div class="content">
+    <h1>@item.Title</h1>
+    <p>@item.Description</p>
+</div>
+}
