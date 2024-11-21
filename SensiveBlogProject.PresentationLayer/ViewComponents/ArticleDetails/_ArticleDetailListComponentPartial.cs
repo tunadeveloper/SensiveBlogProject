@@ -14,9 +14,9 @@ namespace SensiveBlogProject.PresentationLayer.ViewComponents.ArticleDetails
 
         public IViewComponentResult Invoke(int id)
         {
-            id = 1;
+            id = 5;
             var value = _articleService.TGetById(id);
-            return View(value); 
+            return View(value);
         }
     }
 }
