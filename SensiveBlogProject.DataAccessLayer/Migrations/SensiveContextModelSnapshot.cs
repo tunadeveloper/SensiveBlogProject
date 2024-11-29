@@ -301,7 +301,7 @@ namespace SensiveBlogProject.DataAccessLayer.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ArticleID")
+                    b.Property<int>("ArticleId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -318,7 +318,7 @@ namespace SensiveBlogProject.DataAccessLayer.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("ArticleID");
+                    b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
                 });
@@ -472,7 +472,7 @@ namespace SensiveBlogProject.DataAccessLayer.Migrations
 
                     b.HasOne("SensiveBlogProject.EntityLayer.Concrete.Article", "Article")
                         .WithMany("Comments")
-                        .HasForeignKey("ArticleID")
+                        .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

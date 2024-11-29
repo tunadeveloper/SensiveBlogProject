@@ -2,11 +2,14 @@
 
 namespace SensiveBlogProject.PresentationLayer.ViewComponents.ArticleDetails
 {
-    public class _ArticleDetailHeadComponentPartial:ViewComponent
+    public class _ArticleDetailHeadComponentPartial : ViewComponent
     {
+
         public IViewComponentResult Invoke()
         {
+
             return View();
         }
+
     }
 }

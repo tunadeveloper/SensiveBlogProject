@@ -15,26 +15,34 @@ namespace SensiveBlogProject.PresentationLayer
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<SensiveContext>();
-            builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<SensiveContext>().AddErrorDescriber<CustomIdentityValidator>();
-            // Add services to the container.
+
+            builder.Services.AddIdentity<AppUser,AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<SensiveContext>();
+
+
+            builder.Services.AddScoped<IArticleDal, EfArticleDal>();
+            builder.Services.AddScoped<IArticleService, ArticleManager>();
 
             builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
             builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
-			builder.Services.AddScoped<IArticleDal,EfArticleDal>();
-			builder.Services.AddScoped<IArticleService, ArticleManager>();
+            builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+            builder.Services.AddScoped<ICommentService, CommentManager>();
 
-			builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-			builder.Services.AddScoped<ICommentService, CommentManager>();
+            builder.Services.AddScoped<IContactDal, EfContactDal>();
+            builder.Services.AddScoped<IContactService, ContactManager>();
 
-			builder.Services.AddScoped<IContactDal, EfContactDal>();
-			builder.Services.AddScoped<IContactService, ContactManager>();
+            builder.Services.AddScoped<INewsLetterDal, EfNewsLetterDal>();
+            builder.Services.AddScoped<INewsLetterService, NewsLetterManager>();
+
+            builder.Services.AddScoped<ITagCloudDal, EfTagCloudDal>();
+            builder.Services.AddScoped<ITagCloudService, TagCloudManager>();
+
 
             builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
             builder.Services.AddScoped<IAppUserService, AppUserManager>();
 
-
-			builder.Services.AddControllersWithViews();
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
@@ -55,7 +63,14 @@ namespace SensiveBlogProject.PresentationLayer
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Article}/{action=ArticleList}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+            });
 
             app.Run();
         }

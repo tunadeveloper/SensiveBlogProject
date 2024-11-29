@@ -11,36 +11,37 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class AppUserManager : IAppUserService
     {
-        private readonly IAppUserDal _appUserDal;
+        private readonly IAppUserDal _AppUserDal;
 
-        public AppUserManager(IAppUserDal appUserDal)
+        public AppUserManager(IAppUserDal AppUserDal)
         {
-            _appUserDal = appUserDal;
+            _AppUserDal = AppUserDal;
         }
 
         public void TDelete(int id)
         {
-            throw new NotImplementedException();
+            _AppUserDal.Delete(id);
         }
 
         public List<AppUser> TGetAll()
         {
-            return _appUserDal.GetAll();
+            return _AppUserDal.GetAll();
         }
 
         public AppUser TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _AppUserDal.GetById(id);
         }
 
         public void TInsert(AppUser entity)
         {
-            throw new NotImplementedException();
+            _AppUserDal.Insert(entity);
+
         }
 
         public void TUpdate(AppUser entity)
         {
-            throw new NotImplementedException();
+            _AppUserDal.Update(entity);
         }
     }
 }

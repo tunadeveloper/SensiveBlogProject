@@ -1,9 +1,9 @@
-﻿@model Article
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model Article
 
-
-    <div>
-        <h2>Son Blog</h2>
-        <img src="@Model.CoverImageUrl" style="width:100px; height:50px"/>
-    <h1>@Model.Title</h1>
-    <a href="#" class="btn btn-primary">Bu Makaleyi Okuyun</a>
+<div style="border: 1px solid black; padding: 10px; width: 420px;">
+    <h3>Eklenen Son Blog</h3>
+    <img src="@Model.CoverImageUrl" style="width:400px; height:100px" />
+    <br />
+    <h4 href="#">@Model.Title</h4>
 </div>

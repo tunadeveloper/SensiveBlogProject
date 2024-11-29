@@ -11,21 +11,21 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-		private readonly ICategoryDal _categoryDal;
+        private readonly ICategoryDal _categoryDal;
 
-		public CategoryManager(ICategoryDal categoryDal)
-		{
-			_categoryDal = categoryDal;
-		}
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal;
+        }
 
-		public void TDelete(int id)
+        public void TDelete(int id)
         {
            _categoryDal.Delete(id);
         }
 
         public List<Category> TGetAll()
         {
-            return _categoryDal.GetAll();
+           return _categoryDal.GetAll();
         }
 
         public Category TGetById(int id)
@@ -35,15 +35,8 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 
         public void TInsert(Category entity)
         {
-            if (entity.CategoryName.Length >= 5 &&
-                 entity.CategoryName.Length <= 50)
-            {
-                _categoryDal.Insert(entity);
-            }
-            else
-            {
-                //hata mesajı
-            }
+           _categoryDal.Insert(entity);
+
         }
 
         public void TUpdate(Category entity)

@@ -1,4 +1,5 @@
-﻿using SensiveBlogProject.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.DataAccessLayer.Context;
 using SensiveBlogProject.DataAccessLayer.Repositories;
 using SensiveBlogProject.EntityLayer.Concrete;
@@ -14,6 +15,13 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
     {
         public EfCommentDal(SensiveContext context) : base(context)
         {
+        }
+
+        public List<Comment> GetCommentByArticleID(int id)
+        {
+           var context = new SensiveContext();  
+            var values = context.Comments.Where(x=>x.ArticleId == id).Include(y=>y.AppUser).Include(z=>z.Article).ToList();
+            return values;
         }
     }
 }

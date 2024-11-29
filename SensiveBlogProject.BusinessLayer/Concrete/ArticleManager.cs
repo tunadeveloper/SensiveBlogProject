@@ -11,58 +11,58 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
 {
     public class ArticleManager : IArticleService
     {
-        private readonly IArticleDal _articleDal;
 
-		public ArticleManager(IArticleDal articleDal)
-		{
-			_articleDal = articleDal;
-		}
+        private readonly IArticleDal _ArticleDal;
+
+        public ArticleManager(IArticleDal ArticleDal)
+        {
+            _ArticleDal = ArticleDal;
+        }
 
         public List<Article> TArticleListWithCategory()
         {
-            return _articleDal.ArticleListWithCategory();
+         return  _ArticleDal.ArticleListWithCategory();
         }
 
         public List<Article> TArticleListWithCategoryAndAppUser()
         {
-            return _articleDal.ArticleListWithCategoryAndAppUser();
+           return _ArticleDal.ArticleListWithCategoryAndAppUser();
         }
 
         public void TDelete(int id)
         {
-            _articleDal.Delete(id);
+            _ArticleDal.Delete(id);
         }
-
+        
         public List<Article> TGetAll()
         {
-            return _articleDal.GetAll();
+            return _ArticleDal.GetAll();
+        }
+
+        public List<Article> TGetArticlesByAppUserID(int id)
+        {
+            return _ArticleDal.GetArticlesByAppUserID(id);
         }
 
         public Article TGetById(int id)
         {
-            return _articleDal.GetById(id);
+            return _ArticleDal.GetById(id);
         }
 
         public Article TGetLastArticle()
         {
-            return _articleDal.GetLastArticle();
+            return _ArticleDal.GetLastArticle();
         }
 
         public void TInsert(Article entity)
         {
-            _articleDal.Insert(entity);
+            _ArticleDal.Insert(entity);
+
         }
 
         public void TUpdate(Article entity)
         {
-            if (entity.Description != "" && entity.Title.Length >= 5 && entity.Title.Length <= 100)
-            {
-                _articleDal.Update(entity);
-            }
-            else
-            {
-                //hata mesajı
-            }
+            _ArticleDal.Update(entity);
         }
     }
 }

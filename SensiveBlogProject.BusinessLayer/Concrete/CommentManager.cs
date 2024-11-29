@@ -9,32 +9,45 @@ using System.Threading.Tasks;
 
 namespace SensiveBlogProject.BusinessLayer.Concrete
 {
-	public class CommentManager : ICommentService
-	{
-		private readonly ICommentDal _commentDal;
-		public void TDelete(int id)
-		{
-			_commentDal.Delete(id);
-		}
+    public class CommentManager : ICommentService
+    {
+        private readonly ICommentDal _CommentDal;
 
-		public List<Comment> TGetAll()
-		{
-			return _commentDal.GetAll();
-		}
+        public CommentManager(ICommentDal CommentDal)
+        {
+            _CommentDal = CommentDal;
+        }
 
-		public Comment TGetById(int id)
-		{
-			return _commentDal.GetById(id);
-		}
+        public void TDelete(int id)
+        {
+            _CommentDal.Delete(id);
+        }
 
-		public void TInsert(Comment entity)
-		{
-			_commentDal.Insert(entity);
-		}
+        public List<Comment> TGetAll()
+        {
+            return _CommentDal.GetAll();
+        }
 
-		public void TUpdate(Comment entity)
-		{
-			_commentDal.Update(entity);
-		}
-	}
+        public Comment TGetById(int id)
+        {
+            return _CommentDal.GetById(id);
+        }
+
+        public List<Comment> TGetCommentByArticleID(int id)
+        {
+            return _CommentDal.GetCommentByArticleID(id);
+
+        }
+
+        public void TInsert(Comment entity)
+        {
+            _CommentDal.Insert(entity);
+
+        }
+
+        public void TUpdate(Comment entity)
+        {
+            _CommentDal.Update(entity);
+        }
+    }
 }

@@ -11,6 +11,9 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
     {
         List<Article> ArticleListWithCategory();
         List<Article> ArticleListWithCategoryAndAppUser();
+
         Article GetLastArticle();
+
+        List<Article> GetArticlesByAppUserID(int id);
     }
 }

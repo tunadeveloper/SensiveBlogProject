@@ -1,14 +1,16 @@
-﻿@model List<Article>
-
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model List<Article>
 <div class="blog-list">
     <h2>Blog Listesi</h2>
-    @foreach(var item in Model){
+    @foreach (var item in Model)
+    {
+        
+ 
     <div class="blog-item">
         <img src="@item.CoverImageUrl" alt="Blog 1 Kapak">
-        <a href="https://example.com/blog1" target="_blank">@item.Title</a>
-            <p>@(item.Description.Length > 200 ? item.Description.Substring(0, 200) + "..." : item.Description)</p>
-    </div>
-      
+        <a href="/Article/ArticleDetail/@item.ArticleId" target="_blank">@item.Title</a>
+            <p>@item.Description.Substring(0, 80)...<a href="/Article/ArticleDetail/@item.ArticleId">Devamını Oku</a></p>
+        </div>
     }
-</div>
 
+</div>

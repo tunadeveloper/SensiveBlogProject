@@ -13,7 +13,7 @@ namespace SensiveBlogProject.DataAccessLayer.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=TUNA\\SQLEXPRESS;initial Catalog=SensiveBlog;integrated Security=true;");
+            optionsBuilder.UseSqlServer("Server=TUNA\\SQLEXPRESS;initial Catalog=SensiveBlogProjectDb;integrated Security=true;");
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Article> Articles { get; set; }

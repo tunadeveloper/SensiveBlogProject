@@ -1,11 +1,17 @@
-﻿@model List<Category>
-
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model List<Category>
 <div class="category-list">
     <h2>Kategoriler</h2>
     <ul>
-        @foreach(var item in Model){
-        <li><a href="#kategori1">@item.CategoryName</a></li>
+        @foreach (var item in Model)
+        {
+            <li><a href="#kategori1">@item.CategoryName</a></li>
+
         }
+  
     </ul>
-    @await Component.InvokeAsync("_LastArticleComponentPartial")
+    <div class="#lastArticle">
+
+        @await Component.InvokeAsync("_LastArticleComponentPartial")
+    </div>
 </div>

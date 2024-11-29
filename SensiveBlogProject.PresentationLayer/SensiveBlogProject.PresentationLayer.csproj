@@ -18,4 +18,8 @@
     <ProjectReference Include="..\SensiveBlogProject.BusinessLayer\SensiveBlogProject.BusinessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Author\Data\" />
+  </ItemGroup>
+
 </Project>

@@ -17,5 +17,6 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
             var values = _articleService.TArticleListWithCategoryAndAppUser();
             return View(values);
         }
+
     }
 }

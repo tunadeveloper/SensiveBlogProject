@@ -12,8 +12,8 @@ using SensiveBlogProject.DataAccessLayer.Context;
 namespace SensiveBlogProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(SensiveContext))]
-    [Migration("20241105101137_a1")]
-    partial class a1
+    [Migration("20241129101723_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -303,6 +303,9 @@ namespace SensiveBlogProject.DataAccessLayer.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -316,6 +319,8 @@ namespace SensiveBlogProject.DataAccessLayer.Migrations
                     b.HasKey("CommentId");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
                 });
@@ -467,13 +472,26 @@ namespace SensiveBlogProject.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SensiveBlogProject.EntityLayer.Concrete.Article", "Article")
+                        .WithMany("Comments")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("AppUser");
+
+                    b.Navigation("Article");
                 });
 
             modelBuilder.Entity("SensiveBlogProject.EntityLayer.Concrete.AppUser", b =>
                 {
                     b.Navigation("Articles");
 
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("SensiveBlogProject.EntityLayer.Concrete.Article", b =>
+                {
                     b.Navigation("Comments");
                 });
 

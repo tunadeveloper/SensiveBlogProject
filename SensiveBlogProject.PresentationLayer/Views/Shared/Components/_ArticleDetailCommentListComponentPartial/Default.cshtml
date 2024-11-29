@@ -1,0 +1,16 @@
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model List<Comment>
+
+<div class="comments">
+    <h2>Yorumlar</h2>
+    @foreach (var item in Model)
+    {
+        
+   
+    <div class="comment">
+        <p class="comment-author">@item.AppUser.Name @item.AppUser.Surname</p>
+        <p>@item.Detail</p>
+        <span>@item.CreatedDate.ToString("dd/MM/yyyy")</span>
+    </div>
+    }
+</div>

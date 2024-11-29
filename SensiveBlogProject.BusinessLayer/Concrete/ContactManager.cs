@@ -9,38 +9,39 @@ using System.Threading.Tasks;
 
 namespace SensiveBlogProject.BusinessLayer.Concrete
 {
-	public class ContactManager : IContactService
-	{
-		private readonly IContactDal _contactDal;
+    public class ContactManager :IContactService
+    {
+        private readonly IContactDal _ContactDal;
 
-		public ContactManager(IContactDal contactDal)
-		{
-			_contactDal = contactDal;
-		}
+        public ContactManager(IContactDal ContactDal)
+        {
+            _ContactDal = ContactDal;
+        }
 
-		public void TDelete(int id)
-		{
-			_contactDal.Delete(id);
-		}
+        public void TDelete(int id)
+        {
+            _ContactDal.Delete(id);
+        }
 
-		public List<Contact> TGetAll()
-		{
-			return _contactDal.GetAll();
-		}
+        public List<Contact> TGetAll()
+        {
+            return _ContactDal.GetAll();
+        }
 
-		public Contact TGetById(int id)
-		{
-			return _contactDal.GetById(id);
-		}
+        public Contact TGetById(int id)
+        {
+            return _ContactDal.GetById(id);
+        }
 
-		public void TInsert(Contact entity)
-		{
-			_contactDal.Insert(entity);
-		}
+        public void TInsert(Contact entity)
+        {
+            _ContactDal.Insert(entity);
 
-		public void TUpdate(Contact entity)
-		{
-			_contactDal.Update(entity);
-		}
-	}
+        }
+
+        public void TUpdate(Contact entity)
+        {
+            _ContactDal.Update(entity);
+        }
+    }
 }

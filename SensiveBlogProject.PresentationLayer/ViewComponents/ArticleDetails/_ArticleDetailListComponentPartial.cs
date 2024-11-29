@@ -3,7 +3,7 @@ using SensiveBlogProject.BusinessLayer.Abstract;
 
 namespace SensiveBlogProject.PresentationLayer.ViewComponents.ArticleDetails
 {
-    public class _ArticleDetailListComponentPartial:ViewComponent
+    public class _ArticleDetailListComponentPartial : ViewComponent
     {
         private readonly IArticleService _articleService;
 
@@ -14,9 +14,10 @@ namespace SensiveBlogProject.PresentationLayer.ViewComponents.ArticleDetails
 
         public IViewComponentResult Invoke(int id)
         {
-            id = 5;
+           
             var value = _articleService.TGetById(id);
             return View(value);
         }
+
     }
 }

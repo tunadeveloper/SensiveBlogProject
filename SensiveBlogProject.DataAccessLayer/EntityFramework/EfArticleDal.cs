@@ -19,23 +19,34 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
 
         public List<Article> ArticleListWithCategory()
         {
-            var context = new SensiveContext();
-            var values = context.Articles.Include(x => x.Category).ToList();
-            return values;
+            using (var context = new SensiveContext())
+            {
+                return context.Articles.Include(x => x.Category).ToList();
+            }
         }
 
         public List<Article> ArticleListWithCategoryAndAppUser()
         {
-            var context = new SensiveContext();
-            var values = context.Articles.Include(y=>y.Category).Include(x=>x.AppUser).ToList();
-            return values;
+            using (var context = new SensiveContext())
+            {
+                return context.Articles.Include(x => x.Category).Include(y=>y.AppUser).ToList();
+            }
+        }
+
+        public List<Article> GetArticlesByAppUserID(int id)
+        {
+            using (var context = new SensiveContext())
+            {
+                return context.Articles.Where(x=>x.AppUserId ==id).ToList();
+            }
         }
 
         public Article GetLastArticle()
         {
-            var context = new SensiveContext();
-            var value = context.Articles.OrderByDescending(x=>x.ArticleId).Take(1).FirstOrDefault();
-            return value;
+            using (var context = new SensiveContext())
+            {
+                return context.Articles.OrderByDescending(x => x.ArticleId).FirstOrDefault();
+            }
         }
     }
 }

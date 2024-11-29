@@ -3,9 +3,8 @@ using SensiveBlogProject.BusinessLayer.Abstract;
 
 namespace SensiveBlogProject.PresentationLayer.ViewComponents
 {
-    public class _CategoryListComponentPartial:ViewComponent
+    public class _CategoryListComponentPartial : ViewComponent
     {
-
         private readonly ICategoryService _categoryService;
 
         public _CategoryListComponentPartial(ICategoryService categoryService)
@@ -16,7 +15,9 @@ namespace SensiveBlogProject.PresentationLayer.ViewComponents
         public IViewComponentResult Invoke()
         {
             var values = _categoryService.TGetAll();
+
             return View(values);
         }
+
     }
 }

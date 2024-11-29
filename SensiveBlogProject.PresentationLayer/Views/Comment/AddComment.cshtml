@@ -1,0 +1,11 @@
+﻿
+<form method="post" asp-action="AddComment" asp-controller="Comment">
+
+<div class="new-comment">
+    <h2>Yeni Yorum Yap</h2>
+        <input type="hidden" name="ArticleId" value="@ViewBag.id" />
+
+    <textarea placeholder="Yorumunuzu buraya yazın..." name="Detail"></textarea>
+    <button class="btn">Gönder</button>
+</div>
+</form>

@@ -1,18 +1,20 @@
-﻿@model Category
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model Category
 @{
     Layout = null;
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
 
 <div class="container">
-    <br /><br />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <br />
+    <br />
+
     <form method="post">
-        <input type="hidden" asp-for="CategoryId" />
         <label>Kategori Adı</label>
-        <input type="type" asp-for="CategoryName" class="form-control" />
+        <input type="hidden" asp-for="CategoryId" />
+        <input type="text" asp-for="CategoryName" class="form-control" />
         <br />
-        <button class="btn btn-info">Kategoriyi Güncelle</button>
+        <button type="submit" class="btn btn-success">Kaydet</button>
     </form>
 </div>

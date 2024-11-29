@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SensiveBlogProject.DataAccessLayer\SensiveBlogProject.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\SensiveBlogProject.EntityLayer\SensiveBlogProject.EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
