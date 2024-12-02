@@ -15,7 +15,6 @@ namespace SensiveBlogProject.BusinessLayer.Abstract
 
         Article TGetLastArticle();
         List<Article> TGetArticlesByAppUserID(int id);
-
-
+        List<Article> TGetRandomArticleList();
     }
 }

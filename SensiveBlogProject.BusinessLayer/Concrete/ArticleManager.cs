@@ -54,6 +54,11 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _ArticleDal.GetLastArticle();
         }
 
+        public List<Article> TGetRandomArticleList()
+        {
+           return _ArticleDal.GetRandomArticleList();
+        }
+
         public void TInsert(Article entity)
         {
             _ArticleDal.Insert(entity);

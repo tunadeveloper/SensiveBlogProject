@@ -48,5 +48,18 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
                 return context.Articles.OrderByDescending(x => x.ArticleId).FirstOrDefault();
             }
         }
+
+        public List<Article> GetRandomArticleList()
+        {
+            using (var context = new SensiveContext())
+            {
+                var values = context.Articles
+                    .Include(z=>z.Category)
+                    .OrderBy(x=> Guid.NewGuid())
+                    .Take(5)
+                    .ToList();
+                return values;
+            }
+        }
     }
 }

@@ -22,4 +22,15 @@
     <Folder Include="Areas\Author\Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\pluto-1.0.0\.DS_Store" />
+    <None Include="wwwroot\pluto-1.0.0\images\.DS_Store" />
+    <None Include="wwwroot\pluto-1.0.0\images\layout_img\.DS_Store" />
+    <None Include="wwwroot\pluto-1.0.0\modules\.DS_Store" />
+    <None Include="wwwroot\sensive-master\img\blog\.DS_Store" />
+    <None Include="wwwroot\sensive-master\img\gallery\.DS_Store" />
+    <None Include="wwwroot\sensive-master\img\instagram\.DS_Store" />
+    <None Include="wwwroot\sensive-master\vendors\linericon\.DS_Store" />
+  </ItemGroup>
+
 </Project>

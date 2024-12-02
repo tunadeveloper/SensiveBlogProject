@@ -1,5 +1,7 @@
+using FluentValidation.AspNetCore;
 using SensiveBlogProject.BusinessLayer.Abstract;
 using SensiveBlogProject.BusinessLayer.Concrete;
+using SensiveBlogProject.BusinessLayer.Container;
 using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.DataAccessLayer.Context;
 using SensiveBlogProject.DataAccessLayer.EntityFramework;
@@ -18,28 +20,9 @@ namespace SensiveBlogProject.PresentationLayer
 
             builder.Services.AddIdentity<AppUser,AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<SensiveContext>();
 
+            builder.Services.ContainerDependencies();
 
-            builder.Services.AddScoped<IArticleDal, EfArticleDal>();
-            builder.Services.AddScoped<IArticleService, ArticleManager>();
-
-            builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-            builder.Services.AddScoped<ICategoryService, CategoryManager>();
-
-            builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-            builder.Services.AddScoped<ICommentService, CommentManager>();
-
-            builder.Services.AddScoped<IContactDal, EfContactDal>();
-            builder.Services.AddScoped<IContactService, ContactManager>();
-
-            builder.Services.AddScoped<INewsLetterDal, EfNewsLetterDal>();
-            builder.Services.AddScoped<INewsLetterService, NewsLetterManager>();
-
-            builder.Services.AddScoped<ITagCloudDal, EfTagCloudDal>();
-            builder.Services.AddScoped<ITagCloudService, TagCloudManager>();
-
-
-            builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
-            builder.Services.AddScoped<IAppUserService, AppUserManager>();
+            builder.Services.AddControllersWithViews().AddFluentValidation();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

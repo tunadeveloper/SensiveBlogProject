@@ -15,5 +15,6 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
         Article GetLastArticle();
 
         List<Article> GetArticlesByAppUserID(int id);
+        List<Article> GetRandomArticleList();
     }
 }
