@@ -1,18 +1,24 @@
 ﻿@using SensiveBlogProject.EntityLayer.Concrete
 @model Article
 
-
-<div class="cover" style="background-image: url('@Model.CoverImageUrl');"></div>
-
-<!-- Blog Meta Bilgileri -->
-<div class="meta">
-    <span>Kategori: <strong>@Model.CategoryId</strong></span>
-    <span>Yazar: <strong>@Model.AppUserId</strong></span>
-    <span>Oluşturma Tarihi: <strong>@Model.CreatedDate.ToString("dd/MMM/yyyy")</strong></span>
-</div>
-
-<!-- Blog Detayı -->
-<div class="content">
-    <h1>@Model.Title</h1>
+<div class="main_blog_details">
+    <img class="img-fluid" src="@Model.CoverImageUrl" alt="">
+        <h4>@Model.Title</h4>
+    <div class="user_details">
+        <div class="float-left">
+            <a href="#">@Model.CategoryId</a>
+        </div>
+        <div class="float-right mt-sm-0 mt-3">
+            <div class="media">
+                <div class="media-body">
+                    <h5>@Model.AppUserId</h5>
+                    <p>@Model.CreatedDate.ToString("dd/MMM/yyyy")</p>
+                </div>
+                <div class="d-flex">
+                    <img width="42" height="42" src="img/blog/user-img.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
     <p>@Model.Description</p>
 </div>

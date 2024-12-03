@@ -103,16 +103,5 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
         }
 
 
-        //public IActionResult ArticleDetail(Comment comment)
-        //{
-        //    comment.CreatedDate = DateTime.Now;
-        //    comment.ArticleId = 0;
-        //    comment.AppUserId = 0;
-
-        //    _commentService.TInsert(comment);
-        //    return RedirectToAction("Index");
-           
-        //}
-
     }
 }
