@@ -33,10 +33,11 @@ namespace SensiveBlogProject.PresentationLayer.Controllers
         {
             comment.CreatedDate = DateTime.Now;
             //comment.ArticleId = 0;
-            comment.AppUserId = 1;
+            comment.AppUserId = 3;
 
             _commentService.TInsert(comment);
-            return RedirectToAction("ArticleList","Default");
+
+            return Json(new { success = true, message = "Yorumunuz başarıyla eklendi!" });
         }
     }
 }
