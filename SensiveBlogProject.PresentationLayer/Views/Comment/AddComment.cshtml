@@ -3,7 +3,14 @@
     <form id="commentForm" asp-action="AddComment" asp-controller="Comment">
         <input type="hidden" name="ArticleId" value="@ViewBag.id" />
         <div class="form-group">
-            <textarea style="text-transform: none;" class="form-control mb-10" rows="5" name="Detail" placeholder="Yorumunuzu buraya yazın..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+            <textarea style="text-transform: none;"
+                      class="form-control mb-10"
+                      rows="5"
+                      name="Detail"
+                      placeholder="Yorumunuzu buraya yazın..."
+                      onfocus="this.placeholder = ''"
+                      onblur="this.placeholder = 'Mesaj'"
+                      required></textarea>
         </div>
         <button type="submit" class="button submit_btn">Gönder</button>
     </form>
@@ -13,7 +20,7 @@
 
 <script>
     document.getElementById("commentForm").addEventListener("submit", function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const formData = new FormData(e.target);
 
@@ -21,45 +28,49 @@
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Sunucu hatası!');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             if (data.success) {
-
                 Swal.fire({
                     title: 'Başarılı!',
                     text: data.message,
                     icon: 'success',
                     confirmButtonText: 'Tamam'
                 }).then(() => {
-
                     window.location.reload();
                 });
                 e.target.reset();
             } else {
-
-                Swal.fire({
-                    title: 'Hata!',
-                    text: 'Yorum eklenirken bir hata oluştu.',
-                    icon: 'error',
-                    confirmButtonText: 'Tamam'
-                });
+                if (data.redirect) {
+                    Swal.fire({
+                        title: 'Giriş Yapın',
+                        text: data.message,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Giriş Yap',
+                        cancelButtonText: 'İptal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = data.redirect;
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Hata!',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'Tamam'
+                    });
+                }
             }
         })
         .catch(error => {
-
             Swal.fire({
-                title: 'Hata!',
-                text: 'Sunucuya bağlanılamadı: ' + error.message,
+                title: 'Sunucu Hatası!',
+                text: 'Sunucuyla iletişim kurulurken bir hata oluştu.',
                 icon: 'error',
                 confirmButtonText: 'Tamam'
             });
         });
     });
 </script>
-
-

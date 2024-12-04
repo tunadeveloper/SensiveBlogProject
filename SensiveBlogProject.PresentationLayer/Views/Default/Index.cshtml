@@ -19,7 +19,7 @@
     <!--================Hero Banner end =================-->
     <!--================ Blog slider start =================-->
     @await Component.InvokeAsync("_HomeRandomBlogComponentPartial")
-   
+
     <!--================ Blog slider end =================-->
     <!--================ Start Blog Post Area =================-->
     <section class="blog-post-area section-margin mt-4">
@@ -27,11 +27,11 @@
             <div class="row">
 
                     @await Component.InvokeAsync("_HomeBlogListComponentPartial")
-     
+
                 <!-- Start Blog Post Siddebar -->
 
                 @await Component.InvokeAsync("_HomeSiderbarComponentPartial")
-                
+
             </div>
             <!-- End Blog Post Siddebar -->
         </div>
