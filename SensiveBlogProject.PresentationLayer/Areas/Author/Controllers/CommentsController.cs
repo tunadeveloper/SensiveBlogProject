@@ -6,23 +6,22 @@ using SensiveBlogProject.EntityLayer.Concrete;
 namespace SensiveBlogProject.PresentationLayer.Areas.Author.Controllers
 {
     [Area("Author")]
-    public class ArticleController : Controller
+    public class CommentsController : Controller
     {
-        private readonly IArticleService _articleService;
+        private readonly ICommentService _commentService;
         private readonly UserManager<AppUser> _userManager;
-        public ArticleController(IArticleService articleService, UserManager<AppUser> userManager)
+
+        public CommentsController(ICommentService commentService, UserManager<AppUser> userManager)
         {
-            _articleService = articleService;
+            _commentService = commentService;
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> MyArticleList()
+        public async Task<IActionResult> Index()
         {
             var userValue = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            var articlelist = _articleService.TGetArticlesByAppUserID(userValue.Id);
-
-            return View(articlelist);
+            var values = _commentService.TGetArticlesByAppUserID(userValue.Id);
+            return View(values);
         }
     }
 }

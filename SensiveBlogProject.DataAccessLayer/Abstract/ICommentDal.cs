@@ -10,5 +10,6 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
     public interface ICommentDal :IGenericDal<Comment>
     {
         List<Comment> GetCommentByArticleID(int id);
+        List<Comment> GetArticlesByAppUserID(int id);
     }
 }

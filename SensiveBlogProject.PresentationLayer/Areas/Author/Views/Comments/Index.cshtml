@@ -1,0 +1,12 @@
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Author/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+@foreach(var item in Model){
+    <p>@item.Detail</p>
+}

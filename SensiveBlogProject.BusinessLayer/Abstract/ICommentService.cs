@@ -10,6 +10,6 @@ namespace SensiveBlogProject.BusinessLayer.Abstract
     public interface ICommentService : IGenericService<Comment>
     {
         List<Comment> TGetCommentByArticleID(int id);
-
+        List<Comment> TGetArticlesByAppUserID(int id);
     }
 }

@@ -28,6 +28,11 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _CommentDal.GetAll();
         }
 
+        public List<Comment> TGetArticlesByAppUserID(int id)
+        {
+            return _CommentDal.GetArticlesByAppUserID(id);
+        }
+
         public Comment TGetById(int id)
         {
             return _CommentDal.GetById(id);

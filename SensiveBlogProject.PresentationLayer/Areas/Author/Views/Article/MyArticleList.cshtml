@@ -1,31 +1,11 @@
 ﻿@using SensiveBlogProject.EntityLayer.Concrete
 @model List<Article>
 @{
-    Layout = null;
+    Layout = "~/Areas/Author/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makale Listesi</title>
-    <link href="~/css/Article.css" rel="stylesheet" />
-</head>
-<body>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <h2>Kategoriler</h2>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Profilim</a></li>
-                <li><a href="#">Yazılarım</a></li>
-                <li><a href="#">Yorumlarım</a></li>
-                <li><a href="#">Çıkış Yap</a></li>
-            </ul>
-        </aside>
-
         <!-- Main Content -->
         <main class="content">
             <h1>Kullanıcı Makaleleri</h1>
@@ -43,5 +23,3 @@
             </div>
         </main>
     </div>
-</body>
-</html>

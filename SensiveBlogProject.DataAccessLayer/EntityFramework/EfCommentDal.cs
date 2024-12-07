@@ -17,6 +17,14 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
         {
         }
 
+        public List<Comment> GetArticlesByAppUserID(int id)
+        {
+            using (var context = new SensiveContext())
+            {
+                return context.Comments.Where(x=>x.AppUserId == id).ToList();
+            }
+        }
+
         public List<Comment> GetCommentByArticleID(int id)
         {
            var context = new SensiveContext();  
