@@ -1,0 +1,30 @@
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model Category
+@{
+    ViewData["Title"] = "UpdateCategory";
+    Layout = "~/Views/AuthorLayout/Index.cshtml";
+}
+<style>
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto; /* Sayfanın ortasına yerleştirir */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f8f9fa;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="form-container">
+        <h2 class="text-center mb-4">Kategori Güncelleme</h2>
+        <form method="post">
+            <input type="hidden" asp-for="CategoryId" />
+            <div class="mb-3">
+                <label for="name" class="form-label">Kategori</label>
+                <input type="text" class="form-control" asp-for="CategoryName" placeholder="Kategoriyi giriniz.">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Gönder</button>
+        </form>
+    </div>
+</div>

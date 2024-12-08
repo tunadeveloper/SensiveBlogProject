@@ -9,7 +9,7 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
 {
     public interface ICommentDal :IGenericDal<Comment>
     {
-        List<Comment> GetCommentByArticleID(int id);
-        List<Comment> GetArticlesByAppUserID(int id);
+       List<Comment> GetCommentListByArticleId(int id);
+       List<Comment> GetCommentListByAppUserId(int id);
     }
 }

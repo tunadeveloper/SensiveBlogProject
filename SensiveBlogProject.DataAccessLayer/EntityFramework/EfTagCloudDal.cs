@@ -1,5 +1,5 @@
-﻿using SensiveBlogProject.DataAccessLayer.Abstract;
-using SensiveBlogProject.DataAccessLayer.Context;
+﻿using BlogProject.DataAccesLayer.Context;
+using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.DataAccessLayer.Repositories;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
@@ -12,7 +12,7 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
 {
     public class EfTagCloudDal : GenericRepository<TagCloud>, ITagCloudDal
     {
-        public EfTagCloudDal(SensiveContext context) : base(context)
+        public EfTagCloudDal(BlogContext context) : base(context)
         {
         }
     }

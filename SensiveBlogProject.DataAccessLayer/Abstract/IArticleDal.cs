@@ -9,13 +9,9 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
 {
     public interface IArticleDal :IGenericDal<Article>
     {
-        List<Article> ArticleListWithCategory();
-        List<Article> ArticleListWithCategoryAndAppUser();
+        List<Article> LastTake5ListArticlesWithCategory();
+        Article GetArticleByIdWithTagCloudAndAppUser(int id);
 
-        Article GetLastArticle();
-
-        List<Article> GetArticlesByAppUserID(int id);
-        List<Article> GetRandomArticleList();
-
+        List<Article> GetArticleListByAppUserId(int id);
     }
 }

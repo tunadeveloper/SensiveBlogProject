@@ -19,15 +19,7 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             _ArticleDal = ArticleDal;
         }
 
-        public List<Article> TArticleListWithCategory()
-        {
-         return  _ArticleDal.ArticleListWithCategory();
-        }
-
-        public List<Article> TArticleListWithCategoryAndAppUser()
-        {
-           return _ArticleDal.ArticleListWithCategoryAndAppUser();
-        }
+     
 
         public void TDelete(int id)
         {
@@ -39,9 +31,14 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _ArticleDal.GetAll();
         }
 
-        public List<Article> TGetArticlesByAppUserID(int id)
+        public Article TGetArticleByIdWithTagCloudAndAppUser(int id)
         {
-            return _ArticleDal.GetArticlesByAppUserID(id);
+            return _ArticleDal.GetArticleByIdWithTagCloudAndAppUser(id);
+        }
+
+        public List<Article> TGetArticleListByAppUserId(int id)
+        {
+            return _ArticleDal.GetArticleListByAppUserId(id);
         }
 
         public Article TGetById(int id)
@@ -49,20 +46,17 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
             return _ArticleDal.GetById(id);
         }
 
-        public Article TGetLastArticle()
-        {
-            return _ArticleDal.GetLastArticle();
-        }
-
-        public List<Article> TGetRandomArticleList()
-        {
-           return _ArticleDal.GetRandomArticleList();
-        }
+      
 
         public void TInsert(Article entity)
         {
             _ArticleDal.Insert(entity);
 
+        }
+
+        public List<Article> TLastTake5ListArticlesWithCategory()
+        {
+         return _ArticleDal.LastTake5ListArticlesWithCategory();
         }
 
         public void TUpdate(Article entity)

@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SensiveBlogProject.PresentationLayer.Models;
+﻿using BlogProject.PresentationLayer.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace SensiveBlogProject.PresentationLayer.Controllers
+namespace BlogProject.PresentationLayer.Controllers
 {
     public class HomeController : Controller
     {

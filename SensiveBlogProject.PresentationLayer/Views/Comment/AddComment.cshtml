@@ -1,76 +1,34 @@
-﻿<div class="comment-form">
-    <h4>Leave a Reply</h4>
-    <form id="commentForm" asp-action="AddComment" asp-controller="Comment">
-        <input type="hidden" name="ArticleId" value="@ViewBag.id" />
-        <div class="form-group">
-            <textarea style="text-transform: none;"
-                      class="form-control mb-10"
-                      rows="5"
-                      name="Detail"
-                      placeholder="Yorumunuzu buraya yazın..."
-                      onfocus="this.placeholder = ''"
-                      onblur="this.placeholder = 'Mesaj'"
-                      required></textarea>
-        </div>
-        <button type="submit" class="button submit_btn">Gönder</button>
-    </form>
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model Comment
+<div class="comment-form">
+    <h4>Yorum Yap</h4>
+    @if (!User.Identity.IsAuthenticated) // Kullanıcı giriş yapmamışsa
+    {
+        if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                Yorum yapabilmek için giriş yapmanız gerekiyor.
+            </div>
+        }
+    }
+    else
+    {
+        <form method="post" asp-action="AddComment" asp-controller="Comment">
+            <input type="hidden" name="ArticleId" value="@Model.ArticleId" />
+            <div class="form-group">
+                <textarea class="form-control mb-10" asp-for="Detail" rows="8" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+            </div>
+            <button class="button submit_btn">Gönder</button>
+        </form>
+
+    }
+
+       
+   
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    document.getElementById("commentForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-
-        fetch('/Comment/AddComment', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    title: 'Başarılı!',
-                    text: data.message,
-                    icon: 'success',
-                    confirmButtonText: 'Tamam'
-                }).then(() => {
-                    window.location.reload();
-                });
-                e.target.reset();
-            } else {
-                if (data.redirect) {
-                    Swal.fire({
-                        title: 'Giriş Yapın',
-                        text: data.message,
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Giriş Yap',
-                        cancelButtonText: 'İptal'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = data.redirect;
-                        }
-                    });
-                } else {
-                    Swal.fire({
-                        title: 'Hata!',
-                        text: data.message,
-                        icon: 'error',
-                        confirmButtonText: 'Tamam'
-                    });
-                }
-            }
-        })
-        .catch(error => {
-            Swal.fire({
-                title: 'Sunucu Hatası!',
-                text: 'Sunucuyla iletişim kurulurken bir hata oluştu.',
-                icon: 'error',
-                confirmButtonText: 'Tamam'
-            });
-        });
-    });
-</script>

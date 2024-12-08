@@ -9,12 +9,10 @@ namespace SensiveBlogProject.BusinessLayer.Abstract
 {
     public interface IArticleService :IGenericService<Article>
     {
-        List<Article> TArticleListWithCategory();
+        List<Article> TLastTake5ListArticlesWithCategory();
+        Article TGetArticleByIdWithTagCloudAndAppUser(int id);
 
-        List<Article> TArticleListWithCategoryAndAppUser();
+        List<Article> TGetArticleListByAppUserId(int id);
 
-        Article TGetLastArticle();
-        List<Article> TGetArticlesByAppUserID(int id);
-        List<Article> TGetRandomArticleList();
     }
 }

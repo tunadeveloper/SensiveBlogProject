@@ -9,5 +9,6 @@ namespace SensiveBlogProject.DataAccessLayer.Abstract
 {
     public interface ICategoryDal :IGenericDal<Category>
     {
+        List<Category> GetAllCategoriesWithArticle();
     }
 }

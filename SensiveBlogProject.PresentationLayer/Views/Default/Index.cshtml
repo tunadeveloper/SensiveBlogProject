@@ -1,42 +1,20 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<main class="site-main">
-    <!--================Hero Banner start =================-->
-    <section class="mb-30px">
-        <div class="container">
-            <div class="hero-banner" style="background: url(https://images.pexels.com/photos/4549414/pexels-photo-4549414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) left center no-repeat;">
+ @await Component.InvokeAsync("_DefaultSliderComponentPartial")
+@{
+    int page = 1;
+    if (ViewContext.HttpContext.Request.Query.ContainsKey("page") && int.TryParse(ViewContext.HttpContext.Request.Query["page"], out int parsedPage))
+    {
+        page = parsedPage;
+    }
+}
 
-                <div class="hero-banner__content">
-                    <h1>Keşfet, Öğren, İlham Al</h1>
-                    <h4>Her konuda bilgi edinmek, dünyayı keşfetmek ve ilham almak için buradasınız! 🌟</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================Hero Banner end =================-->
-    <!--================ Blog slider start =================-->
-    @await Component.InvokeAsync("_HomeRandomBlogComponentPartial")
+@await Component.InvokeAsync("_DefaultArticleListComponentPartial", new { page })
+@* içerisinde diğer view componentler mevcut *@
 
-    <!--================ Blog slider end =================-->
-    <!--================ Start Blog Post Area =================-->
-    <section class="blog-post-area section-margin mt-4">
-        <div class="container">
-            <div class="row">
 
-                    @await Component.InvokeAsync("_HomeBlogListComponentPartial")
-
-                <!-- Start Blog Post Siddebar -->
-
-                @await Component.InvokeAsync("_HomeSiderbarComponentPartial")
-
-            </div>
-            <!-- End Blog Post Siddebar -->
-        </div>
-    </section>
-    <!--================ End Blog Post Area =================-->
-</main>
 

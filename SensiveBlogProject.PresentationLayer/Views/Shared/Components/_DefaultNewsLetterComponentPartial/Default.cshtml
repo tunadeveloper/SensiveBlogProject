@@ -1,0 +1,58 @@
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model NewsLetter
+
+
+
+<div class="single-sidebar-widget newsletter-widget">
+    <h4 class="single-sidebar-widget__title">Bültene Abone Ol!</h4>
+    <div class="form-group mt-30">
+        <div class="col-autos">
+            <form id="subscribeForm">
+                <input type="email" name="Email" class="form-control" id="inlineFormInputGroup" placeholder="Emailinizi Giriniz."
+                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Emailinizi Giriniz.'" required />
+                <button type="submit" class="bbtns d-block mt-20 w-100">Abone Ol</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#subscribeForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '/NewsLetter/Subscribe',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Başarılı!',
+                            text: response.message,
+                            confirmButtonText: 'Tamam'
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Hata!',
+                            text: response.message,
+                            confirmButtonText: 'Tamam'
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata!',
+                        text: 'Bir hata oluştu. Lütfen tekrar deneyin.',
+                        confirmButtonText: 'Tamam'
+                    });
+                }
+            });
+        });
+    });
+</script>

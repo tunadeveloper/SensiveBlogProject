@@ -1,4 +1,4 @@
-namespace SensiveBlogProject.PresentationLayer.Models
+namespace BlogProject.PresentationLayer.Models
 {
     public class ErrorViewModel
     {

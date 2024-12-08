@@ -28,6 +28,11 @@ namespace SensiveBlogProject.BusinessLayer.Concrete
            return _categoryDal.GetAll();
         }
 
+        public List<Category> TGetAllCategoriesWithArticle()
+        {
+            return _categoryDal.GetAllCategoriesWithArticle();
+        }
+
         public Category TGetById(int id)
         {
            return _categoryDal.GetById(id);

@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BlogProject.DataAccesLayer.Context;
+using Microsoft.EntityFrameworkCore;
 using SensiveBlogProject.DataAccessLayer.Abstract;
-using SensiveBlogProject.DataAccessLayer.Context;
 using SensiveBlogProject.DataAccessLayer.Repositories;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
@@ -13,52 +13,33 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
 {
     public class EfArticleDal : GenericRepository<Article>, IArticleDal
     {
-        public EfArticleDal(SensiveContext context) : base(context)
+        public EfArticleDal(BlogContext context) : base(context)
         {
         }
 
-        public List<Article> ArticleListWithCategory()
+        public Article GetArticleByIdWithTagCloudAndAppUser(int id)
         {
-            using (var context = new SensiveContext())
+            using (var context = new BlogContext())
             {
-                return context.Articles.Include(x => x.Category).ToList();
+                return context.Articles.Where(x => x.ArticleId == id).Include(x => x.AppUser).FirstOrDefault();
             }
         }
 
-        public List<Article> ArticleListWithCategoryAndAppUser()
+        public List<Article> GetArticleListByAppUserId(int id)
         {
-            using (var context = new SensiveContext())
+            using (var context = new BlogContext())
             {
-                return context.Articles.Include(x => x.Category).Include(y=>y.AppUser).ToList();
+                return context.Articles
+                                       .Where(a => a.AppUserId == id)
+                                       .ToList(); 
             }
         }
 
-        public List<Article> GetArticlesByAppUserID(int id)
+        public List<Article> LastTake5ListArticlesWithCategory()
         {
-            using (var context = new SensiveContext())
+            using (var context = new BlogContext())
             {
-                return context.Articles.Where(x=>x.AppUserId ==id).ToList();
-            }
-        }
-
-        public Article GetLastArticle()
-        {
-            using (var context = new SensiveContext())
-            {
-                return context.Articles.OrderByDescending(x => x.ArticleId).FirstOrDefault();
-            }
-        }
-
-        public List<Article> GetRandomArticleList()
-        {
-            using (var context = new SensiveContext())
-            {
-                var values = context.Articles
-                    .Include(z=>z.Category)
-                    .OrderBy(x=> Guid.NewGuid())
-                    .Take(5)
-                    .ToList();
-                return values;
+                return context.Articles.Include(x => x.Category).OrderByDescending(x=>x.ArticleId).Take(5).ToList();
             }
         }
     }

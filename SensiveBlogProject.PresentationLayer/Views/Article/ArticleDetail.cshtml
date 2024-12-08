@@ -1,51 +1,38 @@
-﻿@{
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model Article
+@{
     ViewData["Title"] = "ArticleDetail";
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    Layout = "~/Views/UILayout/Index.cshtml";
 }
 
-<!--================ Hero sm Banner start =================-->
-<section class="mb-30px">
-    <div class="container">
-        <div class="hero-banner hero-banner--sm" style="background: url(https://images.pexels.com/photos/28850944/pexels-photo-28850944/free-photo-of-kanepede-cihazlarla-modern-ev-ofis-kurulumu.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) left center no-repeat;">
-            <div class="hero-banner__content" >
-                <h1>Blog İçeriği</h1>
-                <nav aria-label="breadcrumb" class="banner-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Anasayfa</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Blog İçeriği</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</section>
-<!--================ Hero sm Banner end =================-->
-<!--================ Start Blog Post Area =================-->
-<section class="blog-post-area section-margin">
+
+<section class="blog-post-area section-margin mt-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
 
-                @await Component.InvokeAsync("_ArticleDetailListComponentPartial", new { id = ViewBag.id })
+                @await Component.InvokeAsync("_ArticleDetailMainComponentPartial", new { id = ViewBag.id })
 
-                <div class="navigation-area">
-                    <div class="row">
-                    </div>
-                </div>
-
-                @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new { id = ViewBag.id })
-             
+                @await Component.InvokeAsync("_ArticleDetailAuthorAreaComponentPartial", new { id = ViewBag.id })
 
                 @await Component.InvokeAsync("_ArticleDetailCommentListComponentPartial", new { id = ViewBag.id })
-            
+
+                @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml", new Comment { ArticleId = ViewBag.id })
+
 
             </div>
 
+
             <!-- Start Blog Post Siddebar -->
-            @await Component.InvokeAsync("_HomeSiderbarComponentPartial")
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+
+                    @await Component.InvokeAsync("_DefaultNewsLetterComponentPartial")
+                    @await Component.InvokeAsync("_DefaultCategoryComponentPartial")
+                    @await Component.InvokeAsync("_DefaultTagCloudComponentPartial")
+                </div>
+            </div>
         </div>
         <!-- End Blog Post Siddebar -->
     </div>
 </section>
-
-

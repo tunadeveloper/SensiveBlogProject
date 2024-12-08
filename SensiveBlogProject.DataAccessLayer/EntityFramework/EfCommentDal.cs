@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BlogProject.DataAccesLayer.Context;
+using Microsoft.EntityFrameworkCore;
 using SensiveBlogProject.DataAccessLayer.Abstract;
-using SensiveBlogProject.DataAccessLayer.Context;
 using SensiveBlogProject.DataAccessLayer.Repositories;
 using SensiveBlogProject.EntityLayer.Concrete;
 using System;
@@ -13,22 +13,24 @@ namespace SensiveBlogProject.DataAccessLayer.EntityFramework
 {
     public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
-        public EfCommentDal(SensiveContext context) : base(context)
+        public EfCommentDal(BlogContext context) : base(context)
         {
         }
 
-        public List<Comment> GetArticlesByAppUserID(int id)
+        public List<Comment> GetCommentListByAppUserId(int id)
         {
-            using (var context = new SensiveContext())
+            using (var context = new BlogContext())
             {
-                return context.Comments.Where(x=>x.AppUserId == id).ToList();
+                return context.Comments.Include(x=>x.Article)
+                                       .Where(a => a.AppUserId == id)
+                                       .ToList();
             }
         }
 
-        public List<Comment> GetCommentByArticleID(int id)
+        List<Comment> ICommentDal.GetCommentListByArticleId(int id)
         {
-           var context = new SensiveContext();  
-            var values = context.Comments.Where(x=>x.ArticleId == id).Include(y=>y.AppUser).Include(z=>z.Article).ToList();
+            var context = new BlogContext();
+            var values = context.Comments.Where(x => x.ArticleId == id).Include(y => y.AppUser).Include(z => z.Article).ToList();
             return values;
         }
     }

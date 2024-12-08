@@ -1,0 +1,33 @@
+﻿@using SensiveBlogProject.EntityLayer.Concrete
+@model List<Article>
+
+<div class="col-md-6">
+    <div class="dash_blog">
+        <div class="dash_blog_inner">
+            <div class="dash_head">
+                <h3><span><i class="fa fa-comments-o"></i> Şuana Kadar Yazdıkların</span><span class="plus_green_bt"><a href="#">+</a></span></h3>
+            </div>
+            <div class="list_cont">
+                <p>Makaleler</p>
+            </div>
+            <div class="msg_list_main">
+                <ul class="msg_list">
+                    @foreach (var item in Model)
+                    {
+                        
+                  
+                    <li>
+                            <span><img src="@item.CoverImageUrl" class="img-responsive" alt="#" /></span>
+                        <span>
+                            <span class="name_user" >@item.Title</span>
+                            <span class="msg_user">@item.Description.Substring(0,25)...</span>
+                            <span class="time_ago">@item.CreatedDate.ToString("dd/MMM/yyyy")</span>
+                        </span>
+                    </li>
+                    }
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</div>

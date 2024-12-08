@@ -1,26 +1,30 @@
 ﻿@using SensiveBlogProject.EntityLayer.Concrete
 @model List<Comment>
 
-
 <div class="comments-area">
-    <h4>05 Comments</h4>
-     @foreach (var item in Model)
-    {
+    <h4>@ViewBag.comment Yorum</h4>
     <div class="comment-list">
-        <div class="single-comment justify-content-between d-flex">
-            <div class="user justify-content-between d-flex">
-                <div class="thumb">
-                    <img src="@item.AppUser.ImageUrl" style="max-width:60px">
-                </div>
-                <div class="desc">
-                    <h5><a href="#">@item.AppUser.Name @item.AppUser.Surname</a></h5>
-                        <p class="date">@item.CreatedDate.ToString("dd MMMM yyyy")</p>
-                    <p class="comment">
+        @foreach (var item in Model)
+        {
+            <div class="single-comment justify-content-between d-flex">
+                <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                        <img src="@item.AppUser.ImageUrl" style="width:60px;height:60px;" alt="">
+                    </div>
+                    <div class="desc">
+                        <h5><a href="#">@item.AppUser.Name @item.AppUser.Surname</a></h5>
+                        <p class="date">@item.CreatedDate </p>
+                        <p class="comment">
                             @item.Detail
-                    </p>
+                        </p>
+                    </div>
                 </div>
+
             </div>
-        </div>
+            <br />
+
+        }
+        
     </div>
-    }
+
 </div>

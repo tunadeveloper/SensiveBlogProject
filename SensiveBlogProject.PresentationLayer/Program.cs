@@ -1,3 +1,4 @@
+using BlogProject.PresentationLayer.Areas.Author.Models;
 using FluentValidation.AspNetCore;
 using SensiveBlogProject.BusinessLayer.Abstract;
 using SensiveBlogProject.BusinessLayer.Concrete;
@@ -6,7 +7,6 @@ using SensiveBlogProject.DataAccessLayer.Abstract;
 using SensiveBlogProject.DataAccessLayer.Context;
 using SensiveBlogProject.DataAccessLayer.EntityFramework;
 using SensiveBlogProject.EntityLayer.Concrete;
-using SensiveBlogProject.PresentationLayer.Models;
 
 namespace SensiveBlogProject.PresentationLayer
 {

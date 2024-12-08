@@ -9,5 +9,7 @@ namespace SensiveBlogProject.BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        List<Category> TGetAllCategoriesWithArticle();
+
     }
 }

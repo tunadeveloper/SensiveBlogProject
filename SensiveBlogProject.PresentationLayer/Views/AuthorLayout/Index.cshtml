@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+ @await Component.InvokeAsync("_AuthorLayoutHeadComponentPartial")
+<body class="inner_page tables_page">
+    <div class="full_container">
+        <div class="inner_container">
+            <!-- Sidebar  -->
+            
+            @await Component.InvokeAsync("_AuthorLayoutSidebarComponentPartial")
+
+            <!-- end sidebar -->
+            <!-- right content -->
+            <div id="content">
+                <!-- topbar -->
+                
+                @await Component.InvokeAsync("_AuthorLayoutNavbarComponentPartial")
+
+                <!-- end topbar -->
+                <!-- dashboard inner -->
+                <div class="midde_cont">
+                    <div class="container-fluid">
+                        <div class="row column_title">
+                            <div class="col-md-12">
+                                <div class="page_title">
+                                    <h2>@ViewBag.v3</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                        <div class="row">
+                        @RenderBody()
+                        </div>
+                    </div>
+                    <!-- footer -->
+                    
+                </div>
+                <!-- end dashboard inner -->
+            </div>
+        </div>
+  
+    </div>
+    <!-- jQuery -->
+    @await Component.InvokeAsync("_AuthorLayoutScriptComponentPartial")
+
+   
+</body>
+</html>
