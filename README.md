@@ -1,1 +1,1 @@
-blog projesi -
+blog projesi 
