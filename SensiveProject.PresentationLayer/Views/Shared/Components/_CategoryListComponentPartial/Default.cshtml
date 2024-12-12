@@ -1,0 +1,12 @@
+﻿@model List<Category>
+<div class="category-list">
+	<h2>Kategoriler</h2>
+	<ul>
+		@foreach (var item in Model)
+		{
+			<li><a href="#kategori1">@item.CategoryName</a></li>
+		}
+	</ul>
+
+	@await Component.InvokeAsync("_LastArticleComponentPartial")
+</div>

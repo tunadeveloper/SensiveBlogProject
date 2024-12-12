@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<section class="section-margin--small section-margin">
+    <div class="container">
+
+        @await Component.InvokeAsync("_DefaultContactMapComponentPartial")
+
+        <div class="row">
+            @await Component.InvokeAsync("_DefaultContactInfoComponentPartial")
+
+            <div class="col-md-8 col-lg-9">
+                @await Html.PartialAsync("~/Views/Contact/SendContactMessage.cshtml")
+            </div>
+        </div>
+    </div>
+</section>
+
+

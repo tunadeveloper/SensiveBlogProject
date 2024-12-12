@@ -1,0 +1,73 @@
+﻿@model List<Comment>
+@{
+	ViewData["Title"] = "CommentList";
+	Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<style>
+	.comment-item {
+		border-bottom: 1px solid #ddd;
+		padding: 10px 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+		.comment-item:last-child {
+			border-bottom: none;
+		}
+
+	.comment-content {
+		flex: 1;
+		text-align: left;
+	}
+
+	.time-column {
+		min-width: 150px;
+		text-align: center;
+		margin-right: 750px;
+	}
+
+	.btn-group {
+		display: flex;
+		gap: 10px;
+		justify-content: flex-end;
+		margin-right: 100px;
+	}
+</style>
+
+<div class="col-md-12">
+	<div class="white_shd full margin_bottom_30">
+		<div class="full graph_head">
+			<div class="heading1 margin_0">
+				<h2>Yorumlarınız</h2>
+			</div>
+		</div>
+		<div class="full progress_bar_inner">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="msg_list_main">
+						<ul class="msg_list">
+							@foreach (var item in Model)
+							{
+								<li class="comment-item">
+									<div class="comment-content">
+										<span class="name_user d-block font-weight-bold">@item.Article.Title</span>
+										<span class="msg_user d-block">@item.Detail</span>
+									</div>
+									<div class="time-column text-muted">
+										@item.CreatedDate.ToString("dd-MMM-yyyy")
+									</div>
+									<div class="btn-group">
+										<a href="/Author/Comment/DeleteComment/@item.CommentId" class="btn cur-p btn-outline-danger btn-md">Sil</a>
+										<a href="/Author/Comment/EditComment/@item.CommentId" class="btn cur-p btn-outline-dark btn-md">Güncelle</a>
+									</div>
+								</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

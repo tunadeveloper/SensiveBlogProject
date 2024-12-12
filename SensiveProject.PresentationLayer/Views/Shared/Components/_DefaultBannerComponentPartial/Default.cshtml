@@ -1,0 +1,35 @@
+﻿<section class="mb-30px">
+    <div class="container">
+        <div class="@(ViewBag.BannerTitle != null ? "hero-banner" : "hero-banner hero-banner--sm")">
+            <div class="hero-banner__content">
+                <h1 style="font-size: 35px;">
+                    @if (ViewBag.BannerTitle != null)
+                    {
+                        @ViewBag.BannerTitle
+                    }
+                    else
+                    {
+                        @ViewBag.PageTitle
+                    }
+                </h1>
+                @if (ViewBag.BannerSubtitle != null)
+                {
+                    <h3>@ViewBag.BannerSubtitle</h3>
+                }
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        @if (ViewBag.PageTitle == null)
+                        {
+                            <li>@DateTime.Now.ToString("MMMM dd, yyyy")</li>
+                        }
+                        else
+                        {
+                            <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@ViewBag.PageTitle</li>
+                        }
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

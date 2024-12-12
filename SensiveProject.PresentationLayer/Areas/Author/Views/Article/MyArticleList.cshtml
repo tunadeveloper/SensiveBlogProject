@@ -1,0 +1,102 @@
+﻿@model List<Article>
+@{
+    ViewData["Title"] = "MyArticleList";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+}
+
+<style>
+    .msg_list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+        .msg_list li .left_section {
+            display: flex;
+            flex-direction: column; 
+            flex-grow: 3;
+        }
+
+        .msg_list li .name_user {
+            font-weight: bold;
+            margin-bottom: 5px; 
+        }
+
+        .msg_list li .msg_user {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .msg_list li .time_ago {
+            font-size: 12px;
+            color: #888;
+        }
+
+    .dropdown_section {
+        margin-left: 10px;
+        margin-right:50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .graph_head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px; 
+    }
+
+    .custom-button {
+        padding: 10px 20px; 
+        font-size: 16px; 
+        border-radius: 8px;
+        font-weight: bold; 
+    }
+
+</style>
+
+<div class="col-md-12">
+    <div class="white_shd full margin_bottom_30">
+        <div class="full graph_head d-flex align-items-center justify-content-between">
+            <div class="heading1 margin_0">
+                <h2>Blog Yazılarım</h2>
+            </div>
+            <a href="/Author/Article/CreateArticle/" class="btn cur-p btn-success custom-button" style="margin-right:70px;">Yeni Yazı Ekle</a>
+        </div>
+
+        <div class="full progress_bar_inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="msg_list_main">
+                        <ul class="msg_list">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <div class="left_section">
+                                        <span class="name_user">@item.Title - @item.Category.CategoryName</span>
+                                        <span class="msg_user">@item.Description</span>
+                                        <span class="time_ago">@item.CreatedDate.ToString("dd-MMM-yyyy")</span>
+                                    </div>
+
+                                    <span class="dropdown_section">
+                                        <div class="dropdown dropleft">
+                                            <button type="button" class="btn cur-p btn-outline-info dropdown-toggle" data-toggle="dropdown">Düzenle</button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="/Author/Article/DetailArticle/@item.ArticleId">Görüntüle</a>
+                                                <a class="dropdown-item" href="/Author/Article/EditArticle/@item.ArticleId">Güncelle</a>
+                                                <a class="dropdown-item" href="/Author/Article/DeleteArticle/@item.ArticleId">Sil</a>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿ @model List<Article>
+ 
+<section>
+    <div class="container">      
+        <div class="owl-carousel owl-theme blog-slider">
+            @foreach (var item in Model)
+            {
+                <div class="card blog__slide text-center">
+                    <div class="blog__slide__img">
+                        <img class="card-img rounded-0" src="@item.CoverImageUrl" style="width:360px; height:236px" alt="">
+                    </div>
+                    <div class="blog__slide__content">
+                        <a class="blog__slide__label" href="/DefaultArticle/ArticleDetail/@item.ArticleId">@item.Category.CategoryName</a>
+                        <h3><a href="#">@item.Title</a></h3>
+                        <h2>@DateTime.Now.ToString("d MMM yyyy", new System.Globalization.CultureInfo("tr-TR"))</h2>
+                    </div>
+                </div>
+            }
+        </div>        
+        </div> 
+</section>
+ 
+

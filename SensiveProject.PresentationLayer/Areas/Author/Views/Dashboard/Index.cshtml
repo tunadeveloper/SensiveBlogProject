@@ -1,0 +1,184 @@
+﻿@model Article
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AuthorLayout.cshtml";
+
+}
+<style>
+    .image{
+        border-radius: 15px;
+        overflow: hidden;
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Dashboard</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row column1">
+            <div class="col-md-6 col-lg-3">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-user yellow_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">@ViewBag.userCount</p>
+                            <p class="head_couter">Yazar Sayısı</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-clock-o blue1_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">23.50</p>
+                            <p class="head_couter">Ortalama Blog Okuma Süresi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-cloud-download green_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">@ViewBag.articleCount</p>
+                            <p class="head_couter">Blog Sayısı</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="couter_icon">
+                        <div>
+                            <i class="fa fa-comments-o red_color"></i>
+                        </div>
+                    </div>
+                    <div class="counter_no">
+                        <div>
+                            <p class="total_no">@ViewBag.commentCount</p>
+                            <p class="head_couter">Yorum Sayısı</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row column1 social_media_section  justify-content-center">
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons fb margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-instagram"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>5k</strong></span>
+                                <span>Takipçi</span>
+                            </li>
+                            <li>
+                                <span><strong>128</strong></span>
+                                <span>Gönderi</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons tw margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-twitter"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>4k</strong></span>
+                                <span>Takipçi</span>
+                            </li>
+                            <li>
+                                <span><strong>78</strong></span>
+                                <span>Tweet</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="full socile_icons linked margin_bottom_30">
+                    <div class="social_icon">
+                        <i class="fa fa-linkedin"></i>
+                    </div>
+                    <div class="social_cont">
+                        <ul>
+                            <li>
+                                <span><strong>758+</strong></span>
+                                <span>Bağlantı</span>
+                            </li>
+                            <li>
+                                <span><strong>65</strong></span>
+                                <span>Gönderi</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+        <div class="col-md-8"">
+                <div class="white_shd full margin_bottom_30" style="display: flex; flex-direction: column; min-height: 450px;">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Son Eklenen Blog Yazısı</h2>
+                        </div>
+                    </div>
+                    <div class="full progress_bar_inner" style="flex-grow: 1;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="carousel-inner" style="display: flex; align-items: stretch;">
+                                    <!-- Görseli ve Yazıyı Yan Yana Yerleştir -->
+                                    <div class="image" style="flex-shrink: 0; width: 50%; overflow: hidden; margin-top: 20px;">
+                                        <img src="@Model.CoverImageUrl" alt="" style="width: 80%; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <div class="ml-3" style="flex-grow: 1; padding-left: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                                        <p class="overview"><strong>@Model.Title</strong></p>
+                                        <p class="overview"><strong>@Model.CreatedDate.ToString("dd-MMM-yyyy")</strong></p>
+                                        <p class="testimonial">@Model.Description <a href="/DefaultArticle/ArticleDetail/@Model.ArticleId"> Devamını Oku...</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+   
+</div>
+

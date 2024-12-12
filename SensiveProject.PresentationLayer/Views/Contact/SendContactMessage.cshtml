@@ -1,0 +1,24 @@
+﻿
+<form asp-action="SendContactMessage" asp-controller="Contact" class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="form-group">
+                <input class="form-control" name="Name" id="name" type="text" placeholder="Adınız" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="Email" id="email" type="email" placeholder="Email Adresiniz" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="Subject" id="subject" type="text" placeholder="Konu" required>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="form-group">
+                <textarea class="form-control different-control w-100" name="Message" id="message" cols="30" rows="5" placeholder="Mesajınız" required></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center text-md-right mt-3">
+        <button type="submit" class="button button--active button-contactForm">Mesajı Gönder</button>
+    </div>
+</form>

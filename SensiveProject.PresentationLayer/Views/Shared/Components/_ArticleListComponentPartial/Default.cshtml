@@ -1,0 +1,14 @@
+﻿@model List<Article>
+
+<div class="blog-list">
+	<h2>Blog Listesi</h2>
+	@foreach (var item in Model)
+	{
+		<div class="blog-item">
+			<img src="@item.CoverImageUrl" href="/Article/ArticleDetail/@item.ArticleId" alt="Blog 1 Kapak">
+			<a href="/Article/ArticleDetail/@item.ArticleId" target="_blank">@item.Title</a>
+			<p>@item.Description.Substring(0, 200)...<a href="/Article/ArticleDetail/@item.ArticleId">Devamını Oku</a></p>
+		</div>
+
+	}
+</div>

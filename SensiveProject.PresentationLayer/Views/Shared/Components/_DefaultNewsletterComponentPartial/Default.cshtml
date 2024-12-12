@@ -1,0 +1,83 @@
+﻿<style>
+    .custom-alert {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+        display: none; /* Başlangıçta görünmez */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+        .custom-alert.success {
+            background-color: #895518; /* Yeşil arka plan */
+            color: #fff; /* Beyaz yazı rengi */
+        }
+
+        .custom-alert.error {
+            background-color: #dc3545; /* Kırmızı arka plan */
+            color: #fff; /* Beyaz yazı rengi */
+        }
+</style>
+
+<div class="single-sidebar-widget newsletter-widget">
+    <h4 class="single-sidebar-widget__title">Bültenimize Abone Ol</h4>
+    <form asp-action="Subscribe" asp-controller="Newsletter" method="post" id="newsletter-form">
+        <div class="form-group mt-30">
+            <div class="col-autos">
+                <input type="text" name="Email" class="form-control" placeholder="Email Adresiniz" onfocus="this.placeholder = ''"
+                       onblur="this.placeholder = 'Email Adresiniz'">
+            </div>
+        </div>
+        <button class="bbtns d-block mt-20 w-100">Abone Ol</button>
+    </form>
+    <div id="newsletter-message" style="display: none;" class="custom-alert"></div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+          $('#newsletter-form').on('submit', function (e) {
+        e.preventDefault(); // Formun standart post işlemini durdur
+        const formData = $(this).serialize(); // Form verilerini al
+
+        $.ajax({
+            url: '/Newsletter/Subscribe', // Controller'ın Subscribe Action'ı
+            method: 'POST', // POST metodu
+            data: formData, // Form verileri
+            success: function (response) {
+                if (response.success) {
+                    // Başarılı mesajı göster ve şık hale getir
+                    $('#newsletter-message')
+                        .removeClass('error')
+                        .addClass('success')
+                        .html(response.message)
+                        .fadeIn();
+
+                    // Formu sıfırla
+                    $('#newsletter-form')[0].reset();
+
+                    // Mesajı birkaç saniye sonra gizle (isteğe bağlı)
+                    setTimeout(() => $('#newsletter-message').fadeOut(), 5000);
+                } else {
+                    // Hata mesajı göster ve stil uygula
+                    $('#newsletter-message')
+                        .removeClass('success')
+                        .addClass('error')
+                        .html('Abone olurken bir hata oluştu.')
+                        .fadeIn();
+                }
+            },
+            error: function () {
+                // Genel hata mesajı ve şık tasarım
+                $('#newsletter-message')
+                    .removeClass('success')
+                    .addClass('error')
+                    .html('Bir hata oluştu. Lütfen tekrar deneyin.')
+                    .fadeIn();
+            }
+        });
+    });
+
+</script> 

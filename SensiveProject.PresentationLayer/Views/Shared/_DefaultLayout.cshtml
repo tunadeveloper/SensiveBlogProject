@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
+<body>
+
+    <!--================Header Menu Area =================-->
+    @await Component.InvokeAsync("_DefaultNavbarComponentPartial")
+    <!--================Header Menu Area =================-->
+
+    <!--================ Hero sm banner start =================-->
+
+    @await Component.InvokeAsync("_DefaultBannerComponentPartial")
+
+    <!--================ Hero sm banner end =================-->
+
+    <!-- ================ contact section start ================= -->
+    @RenderBody()
+
+
+    <!-- ================ contact section end ================= -->
+
+    <!--================ Start Footer Area =================-->
+
+    <footer class="footer-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Hakkımızda</h6>
+                        <p>
+                            Bu blog, ilham veren fikirleri, faydalı bilgileri ve keyifli içerikleri bir araya getirmek için oluşturuldu. Hayatın farklı alanlarından konulara dokunarak, okuyucularımızın hem öğrenip hem de keyif alabileceği bir deneyim sunmayı hedefliyoruz.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4  col-md-6 col-sm-6">
+                    @await Html.PartialAsync("~/Views/Newsletter/Subscribe.cshtml")
+                </div>
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">Instragram Akış</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="~/sensive-master/img/instagram/i1.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i2.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i3.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i4.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i5.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i6.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i7.jpg" alt=""></li>
+                            <li><img src="~/sensive-master/img/instagram/i8.jpg" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Bizi Takip Edin</h6>
+                        <p>Sosyal Medya Hesaplarımız</p>
+                        <div class="footer-social d-flex align-items-center">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="#">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <p class="footer-text m-0">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tüm Hakları Saklıdır. | <a href="https://github.com/tunadeveloper/">Tunahan Cengiz</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!--================ End Footer Area =================-->
+
+    <script src="~/sensive-master/vendors/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/sensive-master/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="~/sensive-master/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/sensive-master/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/sensive-master/js/mail-script.js"></script>
+    <script src="~/sensive-master/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<nav id="sidebar">
+	<div class="sidebar_blog_1">
+		<div class="sidebar-header">
+			<div class="logo_section">
+				<a href="#"><img class="logo_icon img-responsive" src="@ViewBag.AuthorImage" alt="#" /></a>
+			</div>
+		</div>
+		<div class="sidebar_user_info">
+			<div class="icon_setting"></div>
+			<div class="user_profle_side">
+				<div class="user_img"><img class="img-responsive" src="@ViewBag.AuthorImage" alt="#" /></div>
+				<div class="user_info">
+					<h6>@ViewBag.AuthorName</h6>
+					<p><span class="online_animation"></span> Online</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar_blog_2">
+		<ul class="list-unstyled components">
+			<li>
+				<a href="/Author/Dashboard/Index/"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
+			</li>
+
+			<li>
+				<a href="/Author/Profile/Index/"><i class="fa fa-diamond purple_color"></i> <span>Profilim</span></a>
+
+			</li>
+
+			<li>
+				<a href="/Author/Article/MyArticleList"><i class="fa fa-object-group blue2_color"></i> <span>Yazılarım</span></a>
+			</li>
+
+			<li>
+				<a href="/Author/Comment/CommentList">
+					<i class="fa fa-paper-plane red_color"></i> <span>Yorumlarım</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="/Default/HomePage/"><i class="fa fa-map purple_color2"></i> <span>Siteye Git</span></a>
+			</li>
+
+			<li>
+				<a href="/Login/Logout/"><i class="fa fa-cog yellow_color"></i> <span>Çıkış</span></a>
+			</li>
+		</ul>
+	</div>
+</nav>

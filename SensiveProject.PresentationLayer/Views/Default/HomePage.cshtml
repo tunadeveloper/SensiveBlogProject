@@ -1,0 +1,130 @@
+﻿@model List<Article>
+@{
+	ViewData["Title"] = "HomePage";
+	Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+
+	ViewBag.BannerTitle = "Fikirlerin buluştuğu bu blogda keşfe çıkmaya hazır mısınız?";
+	ViewBag.BannerSubtitle = "Yeni fikirler ve ilham dolu bir yolculuğa başlayın!";
+}
+
+<main class="site-main">
+
+	<!--================ Blog slider start =================-->
+	@await Component.InvokeAsync("_DefaultSliderComponentPartial")
+
+	<!--================ Blog slider end =================-->
+	<!--================ Start Blog Post Area =================-->
+	<section class="blog-post-area section-margin mt-4">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+
+					@foreach (var item in Model)
+					{
+						<div class="single-recent-blog-post">
+							<div class="thumb">
+								<img class="img-fluid" src="@item.CoverImageUrl" style="width:750px; height:400px" alt="">
+								<ul class="thumb-info">
+									<li><a href="#"><i class="ti-user"></i>@item.AppUser.Name @item.AppUser.Surname</a></li>
+									<li><a href="#"><i class="ti-notepad"></i>@item.CreatedDate.ToString("d MMMM, yyyy", new System.Globalization.CultureInfo("tr-TR"))</a></li>
+									<li>
+										<a href="#">
+											<i class="ti-themify-favicon"></i>@if (item.Comments != null && item.Comments.Count() > 0)
+											{
+												@item.Comments.Count()
+											}
+											else
+											{
+												<span>0</span>
+											}
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="details mt-20">
+								<a href="#">
+									<h3>
+										@item.Title
+									</h3>
+								</a>
+								<p class="tag-list-inline">
+									Etiket:
+									@if (item.Tags != null && item.Tags.Count > 0)
+									{
+										foreach (var tag in item.Tags)
+										{
+											<a href="#">@tag.Title</a> 
+										}
+									}
+									else
+									{
+										<span>Etiket bulunamadı.</span>
+									}
+								</p>
+
+								<p>@item.Description</p>
+								<a class="button" href="/DefaultArticle/ArticleDetail/@item.ArticleId">Devamını Oku <i class="ti-arrow-right"></i></a>
+							</div>
+						</div>
+					}
+
+					<!--Pagination-->
+					<div class="row">
+						<div class="col-lg-12">
+							<nav class="blog-pagination justify-content-center d-flex">
+								<ul class="pagination">
+									@if (ViewBag.CurrentPage > 1)
+									{
+										<li class="page-item">
+											<a href="?page=@(ViewBag.CurrentPage - 1)" class="page-link" aria-label="Previous">
+												<span aria-hidden="true"><i class="ti-angle-left"></i></span>
+											</a>
+										</li>
+									}
+
+									@for (int i = 1; i <= ViewBag.TotalPages; i++)
+									{
+										<li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+											<a href="?page=@i" class="page-link">@i</a>
+										</li>
+									}
+
+									@if (ViewBag.CurrentPage < ViewBag.TotalPages)
+									{
+										<li class="page-item">
+											<a href="?page=@(ViewBag.CurrentPage + 1)" class="page-link" aria-label="Next">
+												<span aria-hidden="true"><i class="ti-angle-right"></i></span>
+											</a>
+										</li>
+									}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+
+				<!-- Start Blog Post Siddebar -->
+				<div class="col-lg-4 sidebar-widgets">
+
+					<div class="widget-wrap">
+
+						@await Component.InvokeAsync("_DefaultNewsletterComponentPartial")
+
+						@await Component.InvokeAsync("_DefaultSideCategoryListComponentPartial")
+
+						@await Component.InvokeAsync("_DefaultSidePopularPostComponentPartial")
+
+						@await Component.InvokeAsync("_DefaultSideTagCloudComponentPartial")
+
+					</div>
+				</div>
+
+			</div>
+			<!-- End Blog Post Siddebar -->
+		</div>
+	</section>
+	<!--================ End Blog Post Area =================-->
+</main>
+
+
+

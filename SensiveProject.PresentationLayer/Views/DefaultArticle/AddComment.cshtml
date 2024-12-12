@@ -1,0 +1,28 @@
+﻿@model Comment
+
+@if (!User.Identity.IsAuthenticated)
+{
+	<div class="alert alert-warning">
+		<strong>Dikkat!</strong> Yorum yapabilmek için önce 
+		<a href="@Url.Action("Index", "Register")">kayıt olmanız</a> veya 
+		<a href="@Url.Action("Index", "Login")">giriş yapmanız</a> gerekiyor.
+	</div>
+}
+else
+{
+	<div class="comment-form">
+		<h4>Yorum Yap</h4>
+
+		<form method="post" asp-action="AddComment" asp-controller="DefaultArticle">
+			<input type="hidden" name="AppUserId" value="@ViewBag.userId" />
+			<input type="hidden" name="ArticleId" value="@ViewBag.i" />
+			<div class="form-group">
+				<textarea class="form-control mb-10" rows="5" name="Detail" placeholder="Mesajınız" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+			</div>
+			<button href="#" type="submit" class="button submit_btn">Yorumu Gönder</button>
+		</form>
+
+	</div>
+}
+
+

@@ -1,0 +1,25 @@
+﻿@model List<Article>
+
+<div class="single-sidebar-widget popular-post-widget">
+    <h4 class="single-sidebar-widget__title">Popüler Bloglar</h4>
+    <div class="popular-post-list">
+        @foreach (var item in Model)
+        {
+            <div class="single-post-list">
+                <div class="thumb">
+                    <img class="card-img rounded-0" src="@item.CoverImageUrl" style="width:300px;height:138px" alt="">
+                    <ul class="thumb-info">
+                        <li><a href="#">@item.AppUser.Name @item.AppUser.Surname</a></li>
+                        <li><a href="#">@item.CreatedDate.ToString("MMM, dd")</a></li>
+                    </ul>
+                </div>
+                <div class="details mt-20">
+                    <a href="@item.ArticleId">
+                        <h6>@item.Title</h6>
+                    </a>
+                </div>
+            </div>
+        }
+      
+    </div>
+</div>
