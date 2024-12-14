@@ -18,6 +18,7 @@ Bu proje, **4 katmanlı mimari** ile yapılandırılmıştır. Her katman, ilgil
 
 ```markdown
 SensiveProject/
+│
 ├── SensiveProject.BusinessLayer/
 │   ├── Dependencies/
 │   ├── Abstract/
@@ -54,6 +55,7 @@ SensiveProject/
     ├── appsettings.json
     └── Program.cs
 
+```
 
 
 ![ArticleDetail](https://github.com/user-attachments/assets/05330871-b74b-466f-b16d-447f87b9b3cb)
