@@ -1,8 +1,43 @@
-# 🍚 **Blog Projesi**
+# 📚 **Blog Projesi**
 
 ---
 
+## 🌟 **Genel Bakış**
 
+Bu proje, yazarların blog yazabilmesi ve birbirleri ile etkileşim halinde olabilmesi için geliştirildi.
+
+- ✍️ Yazarlar, yazar panelinden tüm bilgilerine ulaşabilir ve blog yazma işlemlerini gerçekleştirebilir.
+- 🔑 Yazar hesabı olmayan kişiler kolayca kayıt yapabilir.
+- 📬 Yazarlar ve ziyaretçiler iletişim menüsünden admin ile iletişime geçebilir.
+- 📥 E-Posta ile bültene abone olabilir ve gelişmelerden haberdar olabilir.
+---
+
+## 🚀 **Özellikler**
+
+- 👀 Ziyaretçi olarak kayıt olmadan blog'larda gezinmek
+- 💬 Fikirlerini belirtmek için yorum sistemi
+- 📋 Genel durumu öğrenmek için 'Dashboard' sayfası
+- ✉️ Kullanıcıların düşünce ve istekleri için iletişim formu
+- 📱 Bootstrap ile responsive tasarım
+- ✏️ Kolay bir şekilde yorum ve blog düzenleme
+---
+
+## ⚙️ **Kullanılan Teknolojiler**
+
+- 💻 Web uygulaması yapısı için **ASP.NET Core MVC 6.0**
+- 🛠️ ORM (Object-Relational Mapping) aracı olarak **Entity Framework Core**
+- 📄 Proje karmaşıklığını önlemek için **N Katmanlı Mimari**
+- ⚙️ **CRUD** işlemleri (Ekle, Listele, Güncelle, Sil)
+- 🔑 Kullanıcı Kimliğini Doğrulamak için **Identity**
+- 📦 Veri erişim katmanını yönetmek ve uygulamanın esnekliğini artırmak için **Repository Design Pattern**
+- ✅ Kullanıcıların veri girişlerini doğrulamak için **Fluent Validation**
+- 🗄️ Veritabanı olarak **MSSQL Server**
+- 🏗️ Veritabanı modellemesi için **Code First** yaklaşımı
+- 🔎 Verileri etkin bir şekilde sorgulamak için **LINQ**
+- 🎨 Responsive tasarım için **HTML/CSS** ve **Bootstrap**
+- 📑 Verileri sayfalara bölünerek listelenmesi için **Pagination**
+  
+---
 
 # Proje Yapısı
 
@@ -27,8 +62,6 @@ SensiveProject/
 │   ├── Abstract/
 │   ├── Concrete/
 │   ├── Container/
-│   ├── ErrorMessages/
-│   ├── Logging/
 │   └── ValidationRules/
 │
 ├── SensiveProject.DataAccessLayer/
@@ -39,7 +72,6 @@ SensiveProject/
 │   ├── EntityFramework/
 │   ├── Migrations/
 │   ├── Repositories/
-│   └── UnitOfWork/
 │
 ├── SensiveProject.EntityLayer/
 │   ├── Dependencies/
@@ -101,7 +133,7 @@ Bu proje **ASP.NET Core 6.0** ve **Code First** yaklaşımı kullanılarak geli�
 Proje dosyalarını yerel bilgisayarınıza çekmek için aşağıdaki komutu kullanın:  
 
 ```
-git clone https://github.com/tunadeveloper/SensitiveProject.git
+git clone https://github.com/tunadeveloper/SensiveBlogProject.git
 ```
 
 ---
