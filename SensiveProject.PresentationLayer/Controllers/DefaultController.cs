@@ -28,11 +28,12 @@ namespace SensiveProject.PresentationLayer.Controllers
 								.ToList()
 								.Skip((page - 1) * pageSize)
 								.Take(pageSize)
+								.OrderByDescending(x=>x.ArticleId)
 								.ToList();
 
 			foreach (var article in values)
 			{
-				article.Tags = article.ArticleTagClouds.Select(at => at.TagCloud).ToList();
+				article.Tags = article.ArticleTagClouds.Select(x => x.TagCloud).ToList();
 			}
 
 			ViewBag.CurrentPage = page; 
