@@ -1,5 +1,6 @@
 # 📚 **Blog Projesi**
 
+---
 
 ## 🌟 **Genel Bakış**
 
