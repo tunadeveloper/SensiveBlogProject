@@ -52,45 +52,6 @@ Bu proje, **4 katmanlı mimari** ile yapılandırılmıştır. Her katman, ilgil
 
 
 
-### **Detaylı Dosya Yapısı**
-
-```
-SensiveProject/
-│
-├── SensiveProject.BusinessLayer/
-│   ├── Dependencies/
-│   ├── Abstract/
-│   ├── Concrete/
-│   ├── Container/
-│   └── ValidationRules/
-│
-├── SensiveProject.DataAccessLayer/
-│   ├── Dependencies/
-│   ├── Abstract/
-│   ├── Concrete/
-│   ├── Context/
-│   ├── EntityFramework/
-│   ├── Migrations/
-│   ├── Repositories/
-│
-├── SensiveProject.EntityLayer/
-│   ├── Dependencies/
-│   └── Concrete/
-│
-└── SensiveProject.PresentationLayer/
-    ├── Connected Services/
-    ├── Dependencies/
-    ├── Properties/
-    ├── wwwroot/
-    ├── Areas/
-    ├── Controllers/
-    ├── Models/
-    ├── ViewComponents/
-    ├── Views/
-    ├── appsettings.json
-    └── Program.cs
-
-```
 # 🏠 **Anasayfa**
 ![home](https://github.com/user-attachments/assets/74f1abbb-bc37-46f9-800c-483d13e36f5e)
 
