@@ -101,7 +101,7 @@ git clone https://github.com/tunadeveloper/SensiveBlogProject.git
 
 ## 🖥️ **2. Projeyi Visual Studio'da Açın**  
 - Visual Studio 2022 veya daha yeni bir sürüm kullanmanızı öneririm.  
-- Ana çözüm dosyasını (`SensitiveProject.sln`) Visual Studio ile açın.
+- Ana çözüm dosyasını (`SensiveProject.sln`) Visual Studio ile açın.
 
 
 
